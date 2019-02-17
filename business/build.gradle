@@ -1,0 +1,14 @@
+apply plugin: 'java-library'
+
+def libs = rootProject.ext.libraries
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // dagger
+    implementation "com.google.dagger:dagger:${libs.dagger}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${libs.dagger}"
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

@@ -1,0 +1,6 @@
+package co.com.gustavorealpe.rappymovie.data.net;
+
+public class ApiConstants {
+    public final static String ENDPOINT = "https://api.themoviedb.org/3/";
+    public final static String ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZDdlZjEzMDM3ZjA2Y2FkYjI3NGI2ZTJkZTBhYmRjNSIsInN1YiI6IjU2MmQ5NjI3YzNhMzY4MWI1MjAwOTI1ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fdLS_0S7OJ6fwt2DgOGKzdK9N7MnybWBPOaqm1IgXz8";
+}
