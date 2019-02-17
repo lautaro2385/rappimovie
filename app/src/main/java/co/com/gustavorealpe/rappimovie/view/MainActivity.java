@@ -2,51 +2,49 @@ package co.com.gustavorealpe.rappimovie.view;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.gustavorealpe.rappimovie.R;
-import co.com.gustavorealpe.rappimovie.view.popular.PopularListFragment;
-import co.com.gustavorealpe.rappimovie.view.popular.dummy.DummyContent;
+import co.com.gustavorealpe.rappimovie.view.popular.PopularListListFragment;
 import co.com.gustavorealpe.rappimovie.view.topRated.TopRatedFragment;
 import co.com.gustavorealpe.rappimovie.view.upcoming.UpcomingFragment;
-
-import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
-public class MainActivity extends AppCompatActivity implements PopularListFragment.OnListFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity{
 
-    @BindView(R.id.message)
-    private TextView mTextMessage;
+    private Fragment currentFragment = null;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    PopularListFragment pop = PopularListFragment.newInstance(1);
-                    openFragment(pop);
-                    return true;
-                case R.id.navigation_dashboard:
-                    TopRatedFragment topRatedFragment = TopRatedFragment.newInstance(1);
-                    openFragment(topRatedFragment);
-                    return true;
-                case R.id.navigation_notifications:
-                    UpcomingFragment upcomingFragment = UpcomingFragment.newInstance(1);
-                    openFragment(upcomingFragment);
-                    return true;
-            }
-            return false;
-        }
-    };
+            = item -> {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        if(!(currentFragment instanceof  PopularListListFragment)) {
+                            PopularListListFragment pop = PopularListListFragment.newInstance();
+                            currentFragment = pop;
+                            openFragment(pop);
+                        }
+                        return true;
+                    case R.id.navigation_dashboard:
+                        if(!(currentFragment instanceof  TopRatedFragment)) {
+                            TopRatedFragment topRatedFragment = TopRatedFragment.newInstance(1);
+                            currentFragment = topRatedFragment;
+                            openFragment(topRatedFragment);
+                        }
+                        return true;
+                    case R.id.navigation_notifications:
+                        if(!(currentFragment instanceof  UpcomingFragment)) {
+                            UpcomingFragment upcomingFragment = UpcomingFragment.newInstance(1);
+                            currentFragment = upcomingFragment;
+                            openFragment(upcomingFragment);
+                        }
+                        return true;
+                }
+                return false;
+            };
 
     private void openFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -64,12 +62,8 @@ public class MainActivity extends AppCompatActivity implements PopularListFragme
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        PopularListFragment pop = PopularListFragment.newInstance(1);
+        PopularListListFragment pop = PopularListListFragment.newInstance();
+        currentFragment = pop;
         openFragment(pop);
-    }
-
-    @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
-
     }
 }

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import co.com.gustavorealpe.rappimovie.R;
-import co.com.gustavorealpe.rappimovie.view.popular.PopularListFragment.OnListFragmentInteractionListener;
+import co.com.gustavorealpe.rappimovie.view.popular.PopularListListFragment.OnListFragmentInteractionListener;
 import co.com.gustavorealpe.rappimovie.view.popular.dummy.DummyContent.DummyItem;
 
 import java.util.List;

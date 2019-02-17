@@ -56,6 +56,7 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava:${libs.retrofit}"
     // butterknife
     implementation "com.jakewharton:butterknife:${libs.butterknife}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${libs.butterknife}"
 
     implementation project(':data')
     implementation project(':business')
