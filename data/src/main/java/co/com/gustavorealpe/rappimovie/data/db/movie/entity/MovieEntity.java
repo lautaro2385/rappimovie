@@ -5,9 +5,15 @@ import com.dbflow5.annotation.PrimaryKey;
 import com.dbflow5.annotation.Table;
 import com.dbflow5.structure.BaseModel;
 
+import java.util.Date;
+
+import javax.inject.Inject;
+
 import co.com.gustavorealpe.rappimovie.data.db.databases.AppDatabase;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Table(database = AppDatabase.class, useBooleanGetterSetters = false)
 public class MovieEntity extends BaseModel {
@@ -30,6 +36,9 @@ public class MovieEntity extends BaseModel {
     private Boolean adult;
     private String overview;
     private String releaseDate;
+
+    @Index
+    private Date updateDate = new Date();
 
     @Index
     private Integer type;
