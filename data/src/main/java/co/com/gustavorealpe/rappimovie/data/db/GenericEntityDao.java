@@ -3,6 +3,8 @@ package co.com.gustavorealpe.rappimovie.data.db;
 import com.dbflow5.config.DBFlowDatabase;
 import com.dbflow5.config.FlowManager;
 import com.dbflow5.database.DatabaseWrapper;
+import com.dbflow5.query.SQLOperator;
+import com.dbflow5.query.SQLite;
 import com.dbflow5.structure.BaseModel;
 import com.dbflow5.transaction.ProcessModelTransaction;
 
@@ -10,6 +12,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import co.com.gustavorealpe.rappimovie.data.db.movie.entity.MovieEntity;
+import co.com.gustavorealpe.rappimovie.data.db.movie.entity.MovieEntity_Table;
 import kotlin.Unit;
 
 public abstract class GenericEntityDao<Q extends BaseModel, T extends DBFlowDatabase> {
@@ -66,5 +70,9 @@ public abstract class GenericEntityDao<Q extends BaseModel, T extends DBFlowData
         ProcessModelTransaction<Q> processModelTransaction =
                 new ProcessModelTransaction.Builder<>(Q::save).addAll(items).build();
         return FlowManager.getDatabase(getDatabaseClass()).executeTransaction(processModelTransaction);
+    }
+
+    public List<Q> selectAll(SQLOperator sqlOperator){
+        return SQLite.select().from(getEntityClass()).where(sqlOperator).queryList(dw);
     }
 }

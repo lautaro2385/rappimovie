@@ -15,4 +15,7 @@ public interface MovieMapper {
 
     MovieEntity model2entity(Movie movie);
     List<MovieEntity> model2entity(List<Movie> movie);
+
+    Movie entity2model(MovieEntity entity);
+    List<Movie> entity2model(List<MovieEntity> entities);
 }

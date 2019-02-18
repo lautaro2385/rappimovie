@@ -64,6 +64,8 @@ dependencies {
     implementation "com.github.agrosner.dbflow:reactive-streams:${libs.dbflow_version}"
     implementation "com.github.agrosner.dbflow:paging:${libs.dbflow_version}"
 
+    implementation "joda-time:joda-time:${libs.jodatime}"
+
     // implementation "com.github.Raizlabs.DBFlow:dbflow-rx2:4.2.4"
     implementation project(':common')
     implementation project(':domain')
