@@ -61,3 +61,7 @@ Esta módulo es el encargado de todo lo que tiene que ver con los datos, en este
 Para eso se implementa un patron repositorio, con un DataSource y un factory. El repositorio es la entrada de esta capa, los data source definen si la solicitu es local o remota y con el factory, definimos el cache de los datos, y de donde se vana traer basados en conectividad y en tiempo se solicitud.
 En la base de datos, se gusrda la información de las películas y las versiones de las solicitudes.
 
+![data](https://github.com/lautaro2385/rappimovie/blob/master/iagram.png)
+
+### 4. Common
+Y por último esta el módulo common, aqui es donde se ponen las clases u utilidades que comparten todos los módulos, y por tanto aqui es donde se definen los modelos de la app, que son comunes en las capas.
