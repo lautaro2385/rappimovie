@@ -28,6 +28,9 @@ import co.com.gustavorealpe.rappimovie.view.movie.MovieDetailActivity;
 import co.com.gustavorealpe.rappimovie.view.movie.MovieListFragment;
 import co.com.gustavorealpe.rappimovie.view.movie.MovieRecyclerViewAdapter;
 
+/**
+ * Es la encargada de mostrar los resultado de la busqueda hecha por el usuario
+ */
 public class SearchResultsActivity extends Activity implements SearchResultView {
 
     @Inject

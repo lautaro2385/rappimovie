@@ -12,6 +12,9 @@ import co.com.gustavorealpe.rappimovie.domain.movie.repository.MovieRepository;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 
+/**
+ * solicita la lista de las peliculas próximas a salir
+ */
 public class GetUpcoming extends UseCase<List<Movie>> {
 
     private MovieRepository repository;

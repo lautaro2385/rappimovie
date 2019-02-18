@@ -24,6 +24,9 @@ import co.com.gustavorealpe.rappimovie.di.module.MovieDetailModule;
 import co.com.gustavorealpe.rappimovie.presenter.movie.MovieDetailPresenter;
 import co.com.gustavorealpe.rappimovie.view.BaseActivity;
 
+/**
+ * Se muestra el Detalle de una película seleccionada.
+ */
 public class MovieDetailActivity extends BaseActivity implements MovieDetailView {
 
     public static final String MOVIE_ID = "movieID";

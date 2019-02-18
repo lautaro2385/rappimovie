@@ -21,7 +21,9 @@ import static co.com.gustavorealpe.rappimovie.view.movie.MovieListFragment.TOP_R
 import static co.com.gustavorealpe.rappimovie.view.movie.MovieListFragment.UPCOMING;
 import static co.com.gustavorealpe.rappimovie.view.movie.MovieListFragment.newInstance;
 
-
+/**
+ * Actividad principal que ejecuta cada uno de los fragmentos de la lista de la película
+ */
 public class MainActivity extends AppCompatActivity {
 
     private Integer currentFragment = null;

@@ -12,6 +12,9 @@ import co.com.gustavorealpe.rappimovie.common.Movie;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 
+/**
+ * Solicita la información de las películas po[ulares
+ */
 public class GetPopular extends UseCase {
 
     private MovieRepository movieRepository;

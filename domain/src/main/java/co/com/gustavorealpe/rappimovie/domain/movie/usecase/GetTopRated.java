@@ -12,6 +12,9 @@ import co.com.gustavorealpe.rappimovie.domain.movie.repository.MovieRepository;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 
+/**
+ * Solicyta la información de las películas mejor ranking
+ */
 public class GetTopRated extends UseCase<List<Movie>> {
     private MovieRepository repository;
 

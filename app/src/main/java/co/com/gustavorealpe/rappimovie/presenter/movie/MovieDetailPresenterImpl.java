@@ -8,6 +8,9 @@ import co.com.gustavorealpe.rappimovie.domain.movie.usecase.GetMovieById;
 import co.com.gustavorealpe.rappimovie.view.movie.MovieDetailView;
 import io.reactivex.observers.DisposableObserver;
 
+/**
+ * Se solicita el detalle de una película y se le indica a la vista qlo que tiene qye hacer
+ */
 public class MovieDetailPresenterImpl implements MovieDetailPresenter {
 
     private MovieDetailView view;

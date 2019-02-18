@@ -12,6 +12,9 @@ import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import lombok.Setter;
 
+/**
+ * Solicita la busquedad de peliculas que coincidan con el texto de búsquda
+ */
 public class SearchMovie extends UseCase<List<Movie>> {
     private MovieRepository repository;
     @Setter

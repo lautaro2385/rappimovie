@@ -30,10 +30,7 @@ import co.com.gustavorealpe.rappimovie.presenter.movie.MovieListPresenter;
 import co.com.gustavorealpe.rappimovie.view.BaseFragment;
 
 /**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
+ * Lista las preliculas segun su categoría
  */
 public class MovieListFragment extends BaseFragment implements MovieListView {
     private static final String CATEGORY_EXTRA = "TYPE";

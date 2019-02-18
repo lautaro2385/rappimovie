@@ -16,6 +16,9 @@ import io.reactivex.observers.DisposableObserver;
 import static co.com.gustavorealpe.rappimovie.view.movie.MovieListFragment.TOP_RATED;
 import static co.com.gustavorealpe.rappimovie.view.movie.MovieListFragment.UPCOMING;
 
+/**
+ * Solicita las listas de las películas, según su categoría
+ */
 public class MovieListPresenterImpl implements MovieListPresenter {
 
     private MovieListView view;

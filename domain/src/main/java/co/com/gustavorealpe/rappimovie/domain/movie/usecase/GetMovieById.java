@@ -10,6 +10,9 @@ import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import lombok.Setter;
 
+/**
+ * Solicita la infrormación de uns poelícula por id
+ */
 public class GetMovieById extends UseCase<Movie> {
     private MovieRepository movieRepository;
     @Setter
