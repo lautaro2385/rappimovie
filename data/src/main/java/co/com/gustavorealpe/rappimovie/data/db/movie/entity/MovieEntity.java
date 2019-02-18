@@ -1,15 +1,9 @@
-package co.com.gustavorealpe.rappimovie.data.db.entity;
+package co.com.gustavorealpe.rappimovie.data.db.movie.entity;
 
 import com.dbflow5.annotation.Index;
 import com.dbflow5.annotation.PrimaryKey;
 import com.dbflow5.annotation.Table;
-import com.dbflow5.reactivestreams.query.RXModelQueriable;
-import com.dbflow5.reactivestreams.structure.BaseRXModel;
 import com.dbflow5.structure.BaseModel;
-
-import java.util.List;
-
-import javax.inject.Inject;
 
 import co.com.gustavorealpe.rappimovie.data.db.databases.AppDatabase;
 import lombok.Data;

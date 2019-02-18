@@ -5,7 +5,7 @@ import org.mapstruct.Mapper;
 import java.util.List;
 
 import co.com.gustavorealpe.rappimovie.common.Movie;
-import co.com.gustavorealpe.rappimovie.data.db.entity.MovieEntity;
+import co.com.gustavorealpe.rappimovie.data.db.movie.entity.MovieEntity;
 import co.com.gustavorealpe.rappimovie.data.net.movie.MovieDTO;
 
 @Mapper

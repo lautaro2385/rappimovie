@@ -1,4 +1,4 @@
-package co.com.gustavorealpe.rappimovie.data.db.dao;
+package co.com.gustavorealpe.rappimovie.data.db.movie.dao;
 
 
 import javax.inject.Inject;
@@ -6,7 +6,7 @@ import javax.inject.Singleton;
 
 import co.com.gustavorealpe.rappimovie.data.db.GenericEntityDao;
 import co.com.gustavorealpe.rappimovie.data.db.databases.AppDatabase;
-import co.com.gustavorealpe.rappimovie.data.db.entity.MovieEntity;
+import co.com.gustavorealpe.rappimovie.data.db.movie.entity.MovieEntity;
 
 @Singleton
 public class MovieDao extends GenericEntityDao<MovieEntity, AppDatabase> {
