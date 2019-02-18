@@ -1,7 +1,13 @@
 apply plugin: 'java-library'
 
+def libs = rootProject.ext.libraries
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // lombok
+    compileOnly "org.projectlombok:lombok:${libs.lombok}"
+    annotationProcessor "org.projectlombok:lombok:${libs.lombok}"
 }
 
 sourceCompatibility = "8"

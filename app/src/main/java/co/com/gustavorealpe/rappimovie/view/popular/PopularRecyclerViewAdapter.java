@@ -1,17 +1,19 @@
 package co.com.gustavorealpe.rappimovie.view.popular;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import co.com.gustavorealpe.rappimovie.R;
+import co.com.gustavorealpe.rappimovie.common.Movie;
 import co.com.gustavorealpe.rappimovie.view.popular.PopularListListFragment.OnListFragmentInteractionListener;
 import co.com.gustavorealpe.rappimovie.view.popular.dummy.DummyContent.DummyItem;
-
-import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
@@ -20,11 +22,10 @@ import java.util.List;
  */
 public class PopularRecyclerViewAdapter extends RecyclerView.Adapter<PopularRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private List<Movie> mValues = null;
     private final OnListFragmentInteractionListener mListener;
 
-    public PopularRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
+    public PopularRecyclerViewAdapter(OnListFragmentInteractionListener listener) {
         mListener = listener;
     }
 
@@ -38,8 +39,8 @@ public class PopularRecyclerViewAdapter extends RecyclerView.Adapter<PopularRecy
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+ //       holder.mIdView.setText(mValues.get(position).getId());
+        holder.mContentView.setText(mValues.get(position).getTitle());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,20 +56,26 @@ public class PopularRecyclerViewAdapter extends RecyclerView.Adapter<PopularRecy
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return mValues == null ? 0 : mValues.size();
+    }
+
+    public void setData(List<Movie> movies) {
+        this.mValues = movies;
+        this.notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        @BindView(R.id.item_number)
+        public TextView mIdView;
+        @BindView(R.id.content)
+        public TextView mContentView;
+        public Movie mItem;
 
         public ViewHolder(View view) {
             super(view);
+            ButterKnife.bind(this, view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
         }
 
         @Override

@@ -3,11 +3,16 @@ apply plugin: 'java-library'
 def libs = rootProject.ext.libraries
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     // dagger
     implementation "com.google.dagger:dagger:${libs.dagger}"
     annotationProcessor "com.google.dagger:dagger-compiler:${libs.dagger}"
+
+    implementation "io.reactivex.rxjava2:rxandroid:${libs.rxandroid}"
+    implementation "io.reactivex.rxjava2:rxjava:${libs.rxjava}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${libs.retrofit}"
+
+    implementation project(':common')
 }
 
 sourceCompatibility = "8"

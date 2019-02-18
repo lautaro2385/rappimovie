@@ -7,22 +7,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import co.com.gustavorealpe.rappimovie.App;
 import co.com.gustavorealpe.rappimovie.R;
+import co.com.gustavorealpe.rappimovie.common.Movie;
 import co.com.gustavorealpe.rappimovie.di.component.DaggerPopularListComponent;
 import co.com.gustavorealpe.rappimovie.di.module.PopularListModule;
 import co.com.gustavorealpe.rappimovie.presenter.popular.PopularListPresenter;
 import co.com.gustavorealpe.rappimovie.view.BaseFragment;
-import co.com.gustavorealpe.rappimovie.view.popular.dummy.DummyContent;
-import co.com.gustavorealpe.rappimovie.view.popular.dummy.DummyContent.DummyItem;
 
 /**
  * A fragment representing a list of Items.
@@ -42,6 +41,7 @@ public class PopularListListFragment extends BaseFragment implements PopularList
     ProgressBar progressBar;
 
     private OnListFragmentInteractionListener mListener;
+    private PopularRecyclerViewAdapter adapter;
 
     public PopularListListFragment() {
     }
@@ -80,7 +80,8 @@ public class PopularListListFragment extends BaseFragment implements PopularList
      */
     private void initRecyclerView(View view){
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new PopularRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+        adapter = new PopularRecyclerViewAdapter(mListener);
+        recyclerView.setAdapter(adapter);
     }
 
     /**
@@ -111,6 +112,11 @@ public class PopularListListFragment extends BaseFragment implements PopularList
         progressBar.animate();
     }
 
+    @Override
+    public void setData(List<Movie> movies) {
+        adapter.setData(movies);
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -123,6 +129,6 @@ public class PopularListListFragment extends BaseFragment implements PopularList
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Movie item);
     }
 }

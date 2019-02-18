@@ -8,7 +8,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:${libs.retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
     implementation "com.squareup.okhttp3:logging-interceptor:${libs.okhttp}"
-    implementation "com.squareup.retrofit2:adapter-rxjava:${libs.retrofit}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${libs.retrofit}"
     // dagger
     implementation "com.google.dagger:dagger:${libs.dagger}"
     annotationProcessor "com.google.dagger:dagger-compiler:${libs.dagger}"
@@ -17,7 +17,13 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:${libs.lombok}"
     //gson
     implementation "com.google.code.gson:gson:${libs.gson}"
+    //mapStruct
+    implementation "org.mapstruct:mapstruct:${libs.mapStruct}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${libs.mapStruct}"
+
     implementation project(':business')
+    implementation project(':common')
+
 }
 
 sourceCompatibility = "8"
