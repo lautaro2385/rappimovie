@@ -5,12 +5,14 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import co.com.gustavorealpe.rappimovie.business.movie.repository.MovieRepository;
+import co.com.gustavorealpe.rappimovie.data.db.entity.MovieEntity;
+import co.com.gustavorealpe.rappimovie.domain.movie.repository.MovieRepository;
 import co.com.gustavorealpe.rappimovie.common.Movie;
 import co.com.gustavorealpe.rappimovie.data.di.Cloud;
 import co.com.gustavorealpe.rappimovie.data.di.Local;
 import co.com.gustavorealpe.rappimovie.data.repository.dataSource.MovieDataSource;
 import io.reactivex.Observable;
+import io.reactivex.functions.Consumer;
 
 @Singleton
 public class MovieRepositoryImpl implements MovieRepository {
@@ -24,12 +26,11 @@ public class MovieRepositoryImpl implements MovieRepository {
         this.cloud = cloud;
     }
 
-    public void getMovies() {
-        this.cloud.getMovies();
-    }
-
     @Override
     public Observable<List<Movie>> getPopular() {
-        return this.cloud.getPopular();
+        return this.cloud.getPopular()
+                .doAfterNext(movies -> {
+                    this.local.save(movies, MovieEntity.POPULAR);
+                });
     }
 }

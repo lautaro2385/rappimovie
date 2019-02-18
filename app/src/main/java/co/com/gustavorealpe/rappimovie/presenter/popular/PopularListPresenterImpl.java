@@ -4,18 +4,16 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import co.com.gustavorealpe.rappimovie.business.movie.usecase.GetPopular;
 import co.com.gustavorealpe.rappimovie.common.Movie;
+import co.com.gustavorealpe.rappimovie.domain.movie.usecase.GetPopular;
 import co.com.gustavorealpe.rappimovie.view.popular.PopularListView;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.observers.DisposableObserver;
 
 public class PopularListPresenterImpl implements PopularListPresenter {
 
     private PopularListView view;
     private GetPopular getPopular;
-    private Disposable subscribe;
 
     @Inject
     public PopularListPresenterImpl(PopularListView view,
@@ -27,23 +25,27 @@ public class PopularListPresenterImpl implements PopularListPresenter {
     @Override
     public void onStart() {
         view.visibleProgressBar(true);
-        subscribe = getPopular.execute().subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::handleResults, this::handleError);
+        getPopular.execute(new DisposableObserver<List<Movie>>() {
+            @Override
+            public void onNext(List<Movie> movies) {
+                view.setData(movies);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                view.visibleProgressBar(false);
+            }
+
+            @Override
+            public void onComplete() {
+                view.visibleProgressBar(false);
+            }
+        });
     }
 
     @Override
     public void onDestroy() {
-        if (subscribe != null)
-            subscribe.dispose();
-    }
-
-    private void handleResults(List<Movie> movies) {
-        view.setData(movies);
-        view.visibleProgressBar(false);
-    }
-
-    private void handleError(Throwable t) {
-        view.visibleProgressBar(false);
+        this.getPopular.dispose();
+        this.view = null;
     }
 }

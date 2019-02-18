@@ -1,6 +1,6 @@
 package co.com.gustavorealpe.rappimovie.di.module;
 
-import co.com.gustavorealpe.rappimovie.business.movie.repository.MovieRepository;
+import co.com.gustavorealpe.rappimovie.domain.movie.repository.MovieRepository;
 import co.com.gustavorealpe.rappimovie.data.di.Cloud;
 import co.com.gustavorealpe.rappimovie.data.di.Local;
 import co.com.gustavorealpe.rappimovie.data.repository.MovieRepositoryImpl;

@@ -24,22 +24,12 @@ public class MovieCloud implements MovieDataSource {
 
 
     @Override
-    public void getMovies() {
-        /*this.movieService.getUpcoming().enqueue(new Callback<GenericResponseDTO<MovieDTO>>() {
-            @Override
-            public void onResponse(Call<GenericResponseDTO<MovieDTO>> call, Response<GenericResponseDTO<MovieDTO>> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<GenericResponseDTO<MovieDTO>> call, Throwable t) {
-
-            }
-        });*/
+    public Observable<List<Movie>> getPopular() {
+        return this.movieService.getPopular().map(dto -> movieMapper.dto2model(dto.getResults()));
     }
 
     @Override
-    public Observable<List<Movie>> getPopular() {
-        return this.movieService.getPopular().map(dto -> movieMapper.dto2model(dto.getResults()));
+    public void save(List<Movie> movies, int type) {
+        throw new UnsupportedOperationException();
     }
 }

@@ -5,8 +5,7 @@ import android.content.Context;
 import javax.inject.Singleton;
 
 import co.com.gustavorealpe.rappimovie.App;
-import co.com.gustavorealpe.rappimovie.business.movie.repository.MovieRepository;
-import co.com.gustavorealpe.rappimovie.business.movie.usecase.GetPopular;
+import co.com.gustavorealpe.rappimovie.domain.movie.usecase.GetPopular;
 import co.com.gustavorealpe.rappimovie.di.module.AppModule;
 import co.com.gustavorealpe.rappimovie.di.module.MapperModule;
 import co.com.gustavorealpe.rappimovie.di.module.NetModule;

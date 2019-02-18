@@ -1,4 +1,4 @@
-package co.com.gustavorealpe.rappimovie.business.movie.repository;
+package co.com.gustavorealpe.rappimovie.domain.movie.repository;
 
 import java.util.List;
 

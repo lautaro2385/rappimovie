@@ -6,8 +6,8 @@ import co.com.gustavorealpe.rappimovie.common.Movie;
 import io.reactivex.Observable;
 
 public interface MovieDataSource {
-    void getMovies();
-
     Observable<List<Movie>> getPopular();
+
+    void save(List<Movie> movies, int type);
 }
 

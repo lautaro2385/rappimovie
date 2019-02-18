@@ -1,8 +1,8 @@
-package co.com.gustavorealpe.rappimovie.business.movie.usecase;
+package co.com.gustavorealpe.rappimovie.domain.movie.usecase;
 
 import javax.inject.Inject;
 
-import co.com.gustavorealpe.rappimovie.business.movie.repository.MovieRepository;
+import co.com.gustavorealpe.rappimovie.domain.movie.repository.MovieRepository;
 
 public class GetUpcoming {
 

@@ -8,4 +8,6 @@ public abstract class  AppDatabase extends DBFlowDatabase {
     public static final String NAME = "RappiMovieDatabase";
 
     public static final int VERSION = 1;
+
+
 }

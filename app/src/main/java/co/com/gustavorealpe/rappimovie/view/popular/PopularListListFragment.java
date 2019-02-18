@@ -103,6 +103,7 @@ public class PopularListListFragment extends BaseFragment implements PopularList
     @Override
     public void onDetach() {
         super.onDetach();
+        presenter.onDestroy();
         mListener = null;
     }
 

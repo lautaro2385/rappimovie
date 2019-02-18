@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "co.com.gustavorealpe.rappimovie"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -16,18 +16,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     defaultConfig {
         javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath true
             }
         }
+    }
+    productFlavors {
     }
 }
 
@@ -43,36 +43,40 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'
+
     // dagger
     implementation "com.google.dagger:dagger:${libs.dagger}"
     annotationProcessor "com.google.dagger:dagger-compiler:${libs.dagger}"
+
     // lombok
     compileOnly "org.projectlombok:lombok:${libs.lombok}"
     annotationProcessor "org.projectlombok:lombok:${libs.lombok}"
+
     // refit
     implementation "com.squareup.retrofit2:retrofit:${libs.retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
     implementation "com.squareup.okhttp3:logging-interceptor:${libs.okhttp}"
     implementation "com.squareup.retrofit2:adapter-rxjava2:${libs.retrofit}"
+
     //rx
     implementation "io.reactivex.rxjava2:rxandroid:${libs.rxandroid}"
     implementation "io.reactivex.rxjava2:rxjava:${libs.rxjava}"
+
     // butterknife
     implementation "com.jakewharton:butterknife:${libs.butterknife}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${libs.butterknife}"
+
     //mapStruct
     implementation "org.mapstruct:mapstruct:${libs.mapStruct}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${libs.mapStruct}"
+
     // DBFlow
     annotationProcessor "com.github.agrosner.dbflow:processor:${libs.dbflow_version}"
     implementation "com.github.agrosner.dbflow:core:${libs.dbflow_version}"
     implementation "com.github.agrosner.dbflow:lib:${libs.dbflow_version}"
     implementation "com.github.agrosner.dbflow:reactive-streams:${libs.dbflow_version}"
     implementation "com.github.agrosner.dbflow:paging:${libs.dbflow_version}"
-
-
-
-    implementation project(':business')
+    implementation project(':domain')
     implementation project(':common')
     implementation project(':data')
 }
