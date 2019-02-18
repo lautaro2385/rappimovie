@@ -1,16 +1,20 @@
 package co.com.gustavorealpe.rappimovie.view.movie;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -111,6 +115,43 @@ public class MovieListFragment extends BaseFragment implements MovieListView {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+    }
+
+    @Nullable
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        Animation animation = super.onCreateAnimation(transit, enter, nextAnim);
+
+        // HW layer support only exists on API 11+
+        if (Build.VERSION.SDK_INT >= 11) {
+            if (animation == null && nextAnim != 0) {
+                animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
+            }
+
+            if (animation != null) {
+                getView().setLayerType(View.LAYER_TYPE_HARDWARE, null);
+
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    public void onAnimationEnd(Animation animation) {
+                        getView().setLayerType(View.LAYER_TYPE_NONE, null);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+
+                    // ...other AnimationListener methods go here...
+                });
+            }
+        }
+
+        return animation;
     }
 
     @Override
