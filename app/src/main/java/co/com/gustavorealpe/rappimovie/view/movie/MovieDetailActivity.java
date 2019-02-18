@@ -21,7 +21,7 @@ import co.com.gustavorealpe.rappimovie.common.Movie;
 import co.com.gustavorealpe.rappimovie.data.net.ApiConstants;
 import co.com.gustavorealpe.rappimovie.di.component.DaggerMovieDetailComponent;
 import co.com.gustavorealpe.rappimovie.di.module.MovieDetailModule;
-import co.com.gustavorealpe.rappimovie.presenter.MovieDetailPresenter;
+import co.com.gustavorealpe.rappimovie.presenter.movie.MovieDetailPresenter;
 import co.com.gustavorealpe.rappimovie.view.BaseActivity;
 
 public class MovieDetailActivity extends BaseActivity implements MovieDetailView {

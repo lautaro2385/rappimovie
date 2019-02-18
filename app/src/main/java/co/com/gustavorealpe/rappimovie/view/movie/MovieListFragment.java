@@ -25,7 +25,7 @@ import co.com.gustavorealpe.rappimovie.R;
 import co.com.gustavorealpe.rappimovie.common.Movie;
 import co.com.gustavorealpe.rappimovie.di.component.DaggerMovieListComponent;
 import co.com.gustavorealpe.rappimovie.di.module.MovieListModule;
-import co.com.gustavorealpe.rappimovie.presenter.MovieListPresenter;
+import co.com.gustavorealpe.rappimovie.presenter.movie.MovieListPresenter;
 import co.com.gustavorealpe.rappimovie.view.BaseFragment;
 
 /**

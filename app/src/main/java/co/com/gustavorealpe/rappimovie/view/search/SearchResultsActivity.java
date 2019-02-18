@@ -1,4 +1,4 @@
-package co.com.gustavorealpe.rappimovie.view;
+package co.com.gustavorealpe.rappimovie.view.search;
 
 import androidx.appcompat.app.AppCompatActivity;
 import co.com.gustavorealpe.rappimovie.R;
@@ -8,7 +8,7 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class SearchResultsActivity extends Activity {
+public class SearchResultsActivity extends Activity implements SearchResultView{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

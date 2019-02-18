@@ -1,12 +1,10 @@
 package co.com.gustavorealpe.rappimovie.di.module;
 
-import com.dbflow5.query.Operator;
-
 import javax.inject.Named;
 
 import co.com.gustavorealpe.rappimovie.di.PerActivity;
-import co.com.gustavorealpe.rappimovie.presenter.MovieDetailPresenter;
-import co.com.gustavorealpe.rappimovie.presenter.MovieDetailPresenterImpl;
+import co.com.gustavorealpe.rappimovie.presenter.movie.MovieDetailPresenter;
+import co.com.gustavorealpe.rappimovie.presenter.movie.MovieDetailPresenterImpl;
 import co.com.gustavorealpe.rappimovie.view.movie.MovieDetailView;
 import dagger.Module;
 import dagger.Provides;
