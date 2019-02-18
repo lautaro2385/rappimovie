@@ -1,22 +1,19 @@
 package co.com.gustavorealpe.rappimovie.view.movie;
 
-import android.media.Image;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
+import org.joda.time.DateTime;
 
 import javax.inject.Inject;
 
+import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.gustavorealpe.rappimovie.R;
@@ -27,7 +24,7 @@ import co.com.gustavorealpe.rappimovie.di.module.MovieDetailModule;
 import co.com.gustavorealpe.rappimovie.presenter.MovieDetailPresenter;
 import co.com.gustavorealpe.rappimovie.view.BaseActivity;
 
-public class MovieDetailActivity extends BaseActivity implements  MovieDetailView{
+public class MovieDetailActivity extends BaseActivity implements MovieDetailView {
 
     public static final String MOVIE_ID = "movieID";
     @Inject
@@ -39,6 +36,14 @@ public class MovieDetailActivity extends BaseActivity implements  MovieDetailVie
     Toolbar toolbar;
     @BindView(R.id.toolbar_layout)
     CollapsingToolbarLayout collapsingToolbarLayout;
+    @BindView(R.id.donut_progress)
+    DonutProgress donutProgress;
+    @BindView(R.id.tvOriginalLanguage)
+    TextView tvOriginalLanguage;
+    @BindView(R.id.tvOverview)
+    TextView tvOverview;
+    @BindView(R.id.tvOriginalTitle)
+    TextView tvOriginalTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +61,12 @@ public class MovieDetailActivity extends BaseActivity implements  MovieDetailVie
             }
         });*/
 
-        int id = getIntent().getIntExtra(MOVIE_ID,0);
+        int id = getIntent().getIntExtra(MOVIE_ID, 0);
 
         initDagger(id);
     }
 
-    private void initDagger(int id){
+    private void initDagger(int id) {
         DaggerMovieDetailComponent.builder()
                 .appComponent(getAppComponent())
                 .movieDetailModule(new MovieDetailModule(this, id))
@@ -85,11 +90,24 @@ public class MovieDetailActivity extends BaseActivity implements  MovieDetailVie
     @Override
     public void setMovie(Movie movie) {
         Glide.with(this)
-                .load(ApiConstants.ENDPOINT_IMAGES+movie.getBackdropPath())
+                .load(ApiConstants.ENDPOINT_IMAGES + movie.getBackdropPath())
                 .into(ivImage);
-        toolbar.setTitle(movie.getTitle());
-        collapsingToolbarLayout.setTitle(movie.getTitle());
+        int year = new DateTime(movie.getReleaseDate()).getYear();
+        String title = String.format("%s (%d)", movie.getTitle(), year);
+        toolbar.setTitle(title);
+        collapsingToolbarLayout.setTitle(title);
+        donutProgress.setMax(100);
+        int val = (int) (movie.getVoteAverage()*10F);
+        donutProgress.setText(String.valueOf(val)+"%");
+        donutProgress.setProgress(val);
+
+        tvOriginalLanguage.setText(movie.getOriginalLanguage());
+
+        tvOverview.setText(movie.getOverview());
+
+        tvOriginalTitle.setText(movie.getOriginalTitle());
     }
+
 
     @Override
     public void showToast(String message) {

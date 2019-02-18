@@ -78,8 +78,12 @@ dependencies {
     implementation "com.github.agrosner.dbflow:paging:${libs.dbflow_version}"
     //glide
     implementation "com.github.bumptech.glide:glide:${libs.glide}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${libs.glide}"
 
     implementation "joda-time:joda-time:${libs.jodatime}"
+
+    implementation 'com.github.lzyzsd:circleprogress:1.2.1'
+
     implementation project(':domain')
     implementation project(':common')
     implementation project(':data')

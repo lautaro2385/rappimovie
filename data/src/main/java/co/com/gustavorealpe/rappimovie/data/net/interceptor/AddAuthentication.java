@@ -18,8 +18,14 @@ public class AddAuthentication implements Interceptor {
 
   */
         Request request = chain.request();
-        HttpUrl url = request.url().newBuilder().addQueryParameter("api_key","9d7ef13037f06cadb274b6e2de0abdc5").build();
-        request = request.newBuilder().url(url).addHeader("Authorization", "Bearer "+ApiConstants.ACCESS_TOKEN).build();
+        HttpUrl url = request.url().newBuilder()
+                .addQueryParameter("api_key",ApiConstants.API_KEY)
+                .addQueryParameter("language","es-MX")
+                .build();
+        request = request.newBuilder()
+                .url(url)
+                .addHeader("Authorization", "Bearer "+ApiConstants.ACCESS_TOKEN)
+                .build();
         return chain.proceed(request);
 
     }

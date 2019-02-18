@@ -95,4 +95,10 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="vote_average">Puntuacion de Usuario</string>
+    <string name="original_title">Idioma Original</string>
+    <string name="overview">Resumen</string>
+    <string name="original_title_2">Título Original</string>
+    <string name="search_title">Búsqueda</string>
+    <string name="search_hint">Búscar por categorías</string>
 </resources>
