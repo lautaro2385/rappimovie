@@ -63,7 +63,8 @@ dependencies {
     //mapStruct
     implementation "org.mapstruct:mapstruct:${libs.mapStruct}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${libs.mapStruct}"
-    implementation project(':data')
+
     implementation project(':business')
     implementation project(':common')
+    implementation project(':data')
 }
