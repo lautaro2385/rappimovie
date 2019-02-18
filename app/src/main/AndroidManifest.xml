@@ -37,6 +37,7 @@
                 android:value=".view.MainActivity" />
         </activity>
         <activity android:name=".view.search.SearchResultsActivity"
+            android:theme="@style/AppTheme"
             android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />

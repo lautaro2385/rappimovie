@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -37,6 +38,9 @@ public class SearchResultsActivity extends Activity implements SearchResultView 
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+
+    @BindView(R.id.tvTitle)
+    TextView tvTitle;
 
     private MovieRecyclerViewAdapter adapter;
 
@@ -103,6 +107,7 @@ public class SearchResultsActivity extends Activity implements SearchResultView 
     @Override
     public void setData(List<Movie> movies) {
         adapter.setData(movies);
+        tvTitle.setText("Resultados de la búsqueda("+movies.size()+"):");
     }
 
     @Override

@@ -30,15 +30,15 @@ public class MainActivity extends AppCompatActivity {
             = item -> {
         Integer val = POPULAR;
         switch (item.getItemId()) {
-            case R.id.navigation_home:
+            case R.id.navigation_popular:
                 this.getSupportActionBar().setTitle("Popular");
                 val = POPULAR;
                 break;
-            case R.id.navigation_dashboard:
+            case R.id.navigation_top_rated:
                 this.getSupportActionBar().setTitle("Top Rated");
                 val = TOP_RATED;
                 break;
-            case R.id.navigation_notifications:
+            case R.id.navigation_upcoming:
                 this.getSupportActionBar().setTitle("Upcoming");
                 val = UPCOMING;
                 break;
