@@ -47,6 +47,7 @@ En el paquete __**di**__ esta toda la configuración del dagger di.
 En este módulo se definen los casos de uso y el contrato para el repositorio de la capa de datos.
 Este módulo juega un papel muy importante por que desde este módulo, todas las accionés son asyncronas, evitando que se bloquee el hilo principal de ejecución.
 Los casos de usos implementados son:
+
 | Caso de uso | Descripción |
 |----------|-------------|
 | GetPopular | inicia la solicitud de las películas polulares |
