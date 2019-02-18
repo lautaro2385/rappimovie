@@ -54,6 +54,13 @@ dependencies {
     //mapStruct
     implementation "org.mapstruct:mapstruct:${libs.mapStruct}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${libs.mapStruct}"
+    // DBFlow
+    annotationProcessor "com.github.agrosner.dbflow:processor:${libs.dbflow_version}"
+    implementation "com.github.agrosner.dbflow:core:${libs.dbflow_version}"
+    implementation "com.github.agrosner.dbflow:lib:${libs.dbflow_version}"
+    implementation "com.github.agrosner.dbflow:reactive-streams:${libs.dbflow_version}"
+    implementation "com.github.agrosner.dbflow:paging:${libs.dbflow_version}"
+
     implementation project(':common')
     implementation project(':business')
 }
