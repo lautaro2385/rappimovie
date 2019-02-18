@@ -2,6 +2,7 @@ package co.com.gustavorealpe.rappimovie.di.module;
 
 import android.app.Application;
 import android.content.Context;
+import android.net.ConnectivityManager;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -49,5 +50,10 @@ public class AppModule {
     @Named("ui_thread")
     Scheduler provideUiThread() {
         return AndroidSchedulers.mainThread();
+    }
+
+    @Provides
+    ConnectivityManager providesConnectivityManager(Context context) {
+        return (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 }
