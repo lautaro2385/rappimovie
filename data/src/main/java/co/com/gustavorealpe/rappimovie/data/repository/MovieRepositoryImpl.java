@@ -33,11 +33,31 @@ public class MovieRepositoryImpl implements MovieRepository {
 
     @Override
     public Observable<List<Movie>> getPopular() {
-        MovieDataSource dataSource = factory.createDataSource();
+        MovieDataSource dataSource = factory.createDataSource(MovieEntity.POPULAR);
         return dataSource.getPopular()
                 .doAfterNext(movies -> {
                     if (dataSource instanceof MovieCloud)
                         this.local.save(movies, MovieEntity.POPULAR);
+                });
+    }
+
+    @Override
+    public Observable<List<Movie>> getUpcoming() {
+        MovieDataSource dataSource = factory.createDataSource(MovieEntity.UPCOMING);
+        return dataSource.getUpcoming()
+                .doAfterNext(movies -> {
+                    if (dataSource instanceof MovieCloud)
+                        this.local.save(movies, MovieEntity.UPCOMING);
+                });
+    }
+
+    @Override
+    public Observable<List<Movie>> getTopRated() {
+        MovieDataSource dataSource = factory.createDataSource(MovieEntity.TOP_RATED);
+        return dataSource.getTopRated()
+                .doAfterNext(movies -> {
+                    if (dataSource instanceof MovieCloud)
+                        this.local.save(movies, MovieEntity.TOP_RATED);
                 });
     }
 }

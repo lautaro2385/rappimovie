@@ -10,6 +10,8 @@ import co.com.gustavorealpe.rappimovie.di.module.AppModule;
 import co.com.gustavorealpe.rappimovie.di.module.MapperModule;
 import co.com.gustavorealpe.rappimovie.di.module.NetModule;
 import co.com.gustavorealpe.rappimovie.di.module.RepositoryModule;
+import co.com.gustavorealpe.rappimovie.domain.movie.usecase.GetTopRated;
+import co.com.gustavorealpe.rappimovie.domain.movie.usecase.GetUpcoming;
 import co.com.gustavorealpe.rappimovie.view.MainActivity;
 import dagger.Component;
 
@@ -21,4 +23,6 @@ public interface AppComponent {
     App app();
 
     GetPopular getPopular();
+    GetUpcoming getUpcoming();
+    GetTopRated getTopRated();
 }

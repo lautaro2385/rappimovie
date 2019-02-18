@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(database = AppDatabase.class, useBooleanGetterSetters = false)
 public class VersionEntity  extends BaseModel {
-    public static final Integer MOVIES = 0;
 
     @PrimaryKey
     private Integer idTable;

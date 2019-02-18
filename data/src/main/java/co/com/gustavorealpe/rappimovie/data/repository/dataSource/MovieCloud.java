@@ -29,6 +29,16 @@ public class MovieCloud implements MovieDataSource {
     }
 
     @Override
+    public Observable<List<Movie>> getUpcoming() {
+        return this.movieService.getUpcoming().map(dto -> movieMapper.dto2model(dto.getResults()));
+    }
+
+    @Override
+    public Observable<List<Movie>> getTopRated() {
+        return this.movieService.getTopRated().map(dto -> movieMapper.dto2model(dto.getResults()));
+    }
+
+    @Override
     public void save(List<Movie> movies, int type) {
         throw new UnsupportedOperationException();
     }

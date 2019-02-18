@@ -18,8 +18,8 @@ import lombok.EqualsAndHashCode;
 @Table(database = AppDatabase.class, useBooleanGetterSetters = false)
 public class MovieEntity extends BaseModel {
     public final static int POPULAR = 0;
-    public final static int UPCOMING = 0;
-    public final static int TOP_RATED = 0;
+    public final static int UPCOMING = 1;
+    public final static int TOP_RATED = 2;
 
     @PrimaryKey
     private Integer id;

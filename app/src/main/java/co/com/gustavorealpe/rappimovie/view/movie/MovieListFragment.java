@@ -1,4 +1,4 @@
-package co.com.gustavorealpe.rappimovie.view.popular;
+package co.com.gustavorealpe.rappimovie.view.movie;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,9 +18,9 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import co.com.gustavorealpe.rappimovie.R;
 import co.com.gustavorealpe.rappimovie.common.Movie;
-import co.com.gustavorealpe.rappimovie.di.component.DaggerPopularListComponent;
-import co.com.gustavorealpe.rappimovie.di.module.PopularListModule;
-import co.com.gustavorealpe.rappimovie.presenter.popular.PopularListPresenter;
+import co.com.gustavorealpe.rappimovie.di.component.DaggerMovieListComponent;
+import co.com.gustavorealpe.rappimovie.di.module.MovieListModule;
+import co.com.gustavorealpe.rappimovie.presenter.popular.MovieListPresenter;
 import co.com.gustavorealpe.rappimovie.view.BaseFragment;
 
 /**
@@ -29,10 +29,16 @@ import co.com.gustavorealpe.rappimovie.view.BaseFragment;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class PopularListListFragment extends BaseFragment implements PopularListView {
+public class MovieListFragment extends BaseFragment implements MovieListView {
+    private static final String CATEGORY_EXTRA = "TYPE";
+
+    public static final Integer POPULAR = 0;
+    public static final Integer TOP_RATED = 1;
+    public static final Integer UPCOMING = 2;
+
     private Unbinder unbinder;
     @Inject
-    PopularListPresenter presenter;
+    MovieListPresenter presenter;
 
     @BindView(R.id.list)
     RecyclerView recyclerView;
@@ -41,13 +47,16 @@ public class PopularListListFragment extends BaseFragment implements PopularList
     ProgressBar progressBar;
 
     private OnListFragmentInteractionListener mListener;
-    private PopularRecyclerViewAdapter adapter;
+    private MovieRecyclerViewAdapter adapter;
 
-    public PopularListListFragment() {
+    public MovieListFragment() {
     }
 
-    public static PopularListListFragment newInstance() {
-        PopularListListFragment fragment = new PopularListListFragment();
+    public static MovieListFragment newInstance(Integer category) {
+        MovieListFragment fragment = new MovieListFragment();
+        Bundle args = new Bundle();
+        args.putInt(CATEGORY_EXTRA, category);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -59,7 +68,7 @@ public class PopularListListFragment extends BaseFragment implements PopularList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_popular_item_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_movie_item_list, container, false);
         unbinder = ButterKnife.bind(this, view);
         // Set the adapter
         initRecyclerView(view);
@@ -80,7 +89,7 @@ public class PopularListListFragment extends BaseFragment implements PopularList
      */
     private void initRecyclerView(View view){
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        adapter = new PopularRecyclerViewAdapter(mListener);
+        adapter = new MovieRecyclerViewAdapter(mListener);
         recyclerView.setAdapter(adapter);
     }
 
@@ -88,9 +97,13 @@ public class PopularListListFragment extends BaseFragment implements PopularList
      * Inicia el inyector de dependencias
      */
     private void initDagger() {
-        DaggerPopularListComponent.builder()
+        Integer mCategory = POPULAR;
+        if (getArguments() != null) {
+            mCategory = getArguments().getInt(CATEGORY_EXTRA);
+        }
+        DaggerMovieListComponent.builder()
                 .appComponent(getAppComponent())
-                .popularListModule(new PopularListModule(this))
+                .movieListModule(new MovieListModule(this, mCategory))
                 .build()
                 .inject(this);
     }

@@ -2,6 +2,7 @@ package co.com.gustavorealpe.rappimovie.data.repository.dataSource;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -38,8 +39,22 @@ public class MovieLocal implements MovieDataSource {
      */
     @Override
     public Observable<List<Movie>> getPopular() {
+        return getMovies(MovieEntity.POPULAR);
+    }
+
+    @Override
+    public Observable<List<Movie>> getUpcoming() {
+        return getMovies(MovieEntity.UPCOMING);
+    }
+
+    @Override
+    public Observable<List<Movie>> getTopRated() {
+        return getMovies(MovieEntity.TOP_RATED);
+    }
+
+    private Observable<List<Movie>> getMovies(Integer Category){
         return Observable.create(emitter -> {
-            List<MovieEntity> data = dao.selectAll(MovieEntity_Table.type.eq(MovieEntity.POPULAR));
+            List<MovieEntity> data = dao.selectAll(MovieEntity_Table.type.eq(Category), MovieEntity_Table.updateDate, true);
             List<Movie> movies = mapper.entity2model(data);
             emitter.onNext(movies);
             emitter.onComplete();
@@ -57,7 +72,7 @@ public class MovieLocal implements MovieDataSource {
         me.forEach(p -> p.setType(type));
         dao.bulkSave(me);
         // Actualiza la versión de la tabla de películas
-        VersionEntity version = new VersionEntity(VersionEntity.MOVIES, new Date());
+        VersionEntity version = new VersionEntity(type, new Date());
         versionDao.save(version);
     }
 }

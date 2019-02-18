@@ -12,12 +12,11 @@ import co.com.gustavorealpe.rappimovie.domain.movie.repository.MovieRepository;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 
-public class GetUpcoming extends UseCase<List<Movie>> {
-
+public class GetTopRated extends UseCase<List<Movie>> {
     private MovieRepository repository;
 
     @Inject
-    public GetUpcoming(@Named("executor_thread") Scheduler executorThread,
+    public GetTopRated(@Named("executor_thread") Scheduler executorThread,
                        @Named("ui_thread") Scheduler uiThread,
                        MovieRepository repository) {
         super(executorThread, uiThread);
@@ -26,6 +25,6 @@ public class GetUpcoming extends UseCase<List<Movie>> {
 
     @Override
     protected Observable<List<Movie>> createObservableUseCase() {
-        return repository.getUpcoming();
+        return repository.getTopRated();
     }
 }

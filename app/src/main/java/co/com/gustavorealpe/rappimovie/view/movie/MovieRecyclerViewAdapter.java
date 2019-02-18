@@ -1,4 +1,4 @@
-package co.com.gustavorealpe.rappimovie.view.popular;
+package co.com.gustavorealpe.rappimovie.view.movie;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,27 +12,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.gustavorealpe.rappimovie.R;
 import co.com.gustavorealpe.rappimovie.common.Movie;
-import co.com.gustavorealpe.rappimovie.view.popular.PopularListListFragment.OnListFragmentInteractionListener;
-import co.com.gustavorealpe.rappimovie.view.popular.dummy.DummyContent.DummyItem;
+import co.com.gustavorealpe.rappimovie.view.movie.MovieListFragment.OnListFragmentInteractionListener;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
-public class PopularRecyclerViewAdapter extends RecyclerView.Adapter<PopularRecyclerViewAdapter.ViewHolder> {
+public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.ViewHolder> {
 
     private List<Movie> mValues = null;
     private final OnListFragmentInteractionListener mListener;
 
-    public PopularRecyclerViewAdapter(OnListFragmentInteractionListener listener) {
+    public MovieRecyclerViewAdapter(OnListFragmentInteractionListener listener) {
         mListener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_popular_item, parent, false);
+                .inflate(R.layout.fragment_movie_item, parent, false);
         return new ViewHolder(view);
     }
 

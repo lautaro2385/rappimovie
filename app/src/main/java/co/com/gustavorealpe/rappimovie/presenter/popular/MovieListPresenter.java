@@ -1,6 +1,6 @@
 package co.com.gustavorealpe.rappimovie.presenter.popular;
 
-public interface PopularListPresenter {
+public interface MovieListPresenter {
     void onStart();
 
     void onDestroy();

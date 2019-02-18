@@ -10,4 +10,7 @@ public interface MovieService {
 
     @GET("movie/popular")
     Observable<GenericResponseDTO<MovieDTO>> getPopular();
+
+    @GET("movie/top_rated")
+    Observable<GenericResponseDTO<MovieDTO>> getTopRated();
 }
