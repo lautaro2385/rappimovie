@@ -25,4 +25,14 @@ La arquitectura implementada para está aplicación se basa en Clean Architectur
 
 ![Arquitectura Limpia](https://erikcaffrey.github.io/content/images/2016/1/clean_archi.png)
 
-Basandome 
+Basándome en eso se divide la aplicación en 4 módulos:
+
+### 1. App
+Este módulo es donde estan todas las dependencias de Android, en este se concentra la mayor parte de la configuración de inyección de dependecias (Dagger), y tambien en esta capa o módulo se implementa la V y P de patrón MVP.
+
+| módulo | Descripción |
+|----------|-------------|
+| app |  |
+| domain ||
+| data | |
+| common ||
