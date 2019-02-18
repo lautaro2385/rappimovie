@@ -79,6 +79,7 @@ dependencies {
     //glide
     implementation "com.github.bumptech.glide:glide:${libs.glide}"
 
+    implementation "joda-time:joda-time:${libs.jodatime}"
     implementation project(':domain')
     implementation project(':common')
     implementation project(':data')

@@ -42,4 +42,9 @@ public class MovieCloud implements MovieDataSource {
     public void save(List<Movie> movies, int type) {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public Observable<Movie> getMovieById(Integer id) {
+        return null;
+    }
 }

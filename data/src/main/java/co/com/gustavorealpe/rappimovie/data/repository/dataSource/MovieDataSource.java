@@ -11,5 +11,7 @@ public interface MovieDataSource {
     Observable<List<Movie>> getTopRated();
 
     void save(List<Movie> movies, int type);
+
+    Observable<Movie> getMovieById(Integer id);
 }
 

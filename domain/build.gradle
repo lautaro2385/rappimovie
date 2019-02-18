@@ -12,6 +12,10 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:${libs.rxjava}"
     implementation "com.squareup.retrofit2:adapter-rxjava2:${libs.retrofit}"
 
+    // lombok
+    compileOnly "org.projectlombok:lombok:${libs.lombok}"
+    annotationProcessor "org.projectlombok:lombok:${libs.lombok}"
+
     implementation project(':common')
 }
 

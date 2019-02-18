@@ -60,4 +60,9 @@ public class MovieRepositoryImpl implements MovieRepository {
                         this.local.save(movies, MovieEntity.TOP_RATED);
                 });
     }
+
+    @Override
+    public Observable<Movie> getMovieById(Integer id) {
+        return local.getMovieById(id);
+    }
 }

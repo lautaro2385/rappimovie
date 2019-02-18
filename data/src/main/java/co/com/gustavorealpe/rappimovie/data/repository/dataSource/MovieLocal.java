@@ -75,4 +75,15 @@ public class MovieLocal implements MovieDataSource {
         VersionEntity version = new VersionEntity(type, new Date());
         versionDao.save(version);
     }
+
+    @Override
+    public Observable<Movie> getMovieById(Integer id) {
+        return Observable.create(emitter -> {
+            MovieEntity me =new MovieEntity();
+            me.setId(id);
+            Movie movie = mapper.entity2model(dao.load(me));
+            emitter.onNext(movie);
+            emitter.onComplete();
+        });
+    }
 }

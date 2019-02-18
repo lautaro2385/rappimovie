@@ -1,6 +1,7 @@
 package co.com.gustavorealpe.rappimovie.view.movie;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,7 +25,7 @@ import co.com.gustavorealpe.rappimovie.R;
 import co.com.gustavorealpe.rappimovie.common.Movie;
 import co.com.gustavorealpe.rappimovie.di.component.DaggerMovieListComponent;
 import co.com.gustavorealpe.rappimovie.di.module.MovieListModule;
-import co.com.gustavorealpe.rappimovie.presenter.popular.MovieListPresenter;
+import co.com.gustavorealpe.rappimovie.presenter.MovieListPresenter;
 import co.com.gustavorealpe.rappimovie.view.BaseFragment;
 
 /**
@@ -50,8 +51,15 @@ public class MovieListFragment extends BaseFragment implements MovieListView {
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
-    private OnListFragmentInteractionListener mListener;
     private MovieRecyclerViewAdapter adapter;
+    private  OnListFragmentInteractionListener mListener =new OnListFragmentInteractionListener() {
+        @Override
+        public void onListFragmentInteraction(Movie item) {
+            Intent i = new Intent(getActivity(), MovieDetailActivity.class);
+            i.putExtra(MovieDetailActivity.MOVIE_ID, item.getId());
+            startActivity(i);
+        }
+    };
 
     public MovieListFragment() {
     }
@@ -158,7 +166,6 @@ public class MovieListFragment extends BaseFragment implements MovieListView {
     public void onDetach() {
         super.onDetach();
         presenter.onDestroy();
-        mListener = null;
     }
 
     @Override
@@ -171,6 +178,7 @@ public class MovieListFragment extends BaseFragment implements MovieListView {
     public void setData(List<Movie> movies) {
         adapter.setData(movies);
     }
+
 
     /**
      * This interface must be implemented by activities that contain this

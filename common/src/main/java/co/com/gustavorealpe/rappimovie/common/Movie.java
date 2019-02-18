@@ -1,5 +1,6 @@
 package co.com.gustavorealpe.rappimovie.common;
 
+import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
@@ -19,5 +20,5 @@ public class Movie {
     private String backdropPath;
     private Boolean adult;
     private String overview;
-    private String releaseDate;
+    private Date releaseDate;
 }

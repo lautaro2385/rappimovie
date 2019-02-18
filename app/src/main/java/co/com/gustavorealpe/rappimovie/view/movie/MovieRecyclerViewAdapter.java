@@ -14,7 +14,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
+import org.joda.time.DateTime;
+
 import java.security.MessageDigest;
+import java.time.Year;
+import java.time.temporal.TemporalField;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -52,6 +56,8 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
                 .load(ApiConstants.ENDPOINT_IMAGES+holder.mItem.getBackdropPath())
                 //.transform(new MyTransformation())
                 .into(holder.mImage);
+
+        //int year =new DateTime(holder.mItem.getReleaseDate()).year().get();
         holder.mContentView.setText(mValues.get(position).getTitle());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {

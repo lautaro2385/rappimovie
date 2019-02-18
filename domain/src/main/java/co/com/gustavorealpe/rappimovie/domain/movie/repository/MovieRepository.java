@@ -9,4 +9,6 @@ public interface MovieRepository {
     Observable<List<Movie>> getPopular();
     Observable<List<Movie>> getUpcoming();
     Observable<List<Movie>> getTopRated();
+
+    Observable<Movie> getMovieById(Integer id);
 }

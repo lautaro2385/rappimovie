@@ -5,6 +5,7 @@ import android.content.Context;
 import javax.inject.Singleton;
 
 import co.com.gustavorealpe.rappimovie.App;
+import co.com.gustavorealpe.rappimovie.domain.movie.usecase.GetMovieById;
 import co.com.gustavorealpe.rappimovie.domain.movie.usecase.GetPopular;
 import co.com.gustavorealpe.rappimovie.di.module.AppModule;
 import co.com.gustavorealpe.rappimovie.di.module.MapperModule;
@@ -25,4 +26,5 @@ public interface AppComponent {
     GetPopular getPopular();
     GetUpcoming getUpcoming();
     GetTopRated getTopRated();
+    GetMovieById getMovieById();
 }

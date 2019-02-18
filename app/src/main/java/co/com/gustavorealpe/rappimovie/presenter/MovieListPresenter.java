@@ -1,4 +1,4 @@
-package co.com.gustavorealpe.rappimovie.presenter.popular;
+package co.com.gustavorealpe.rappimovie.presenter;
 
 public interface MovieListPresenter {
     void onStart();

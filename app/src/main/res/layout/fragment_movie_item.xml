@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:contentDescription="imagen"
+        android:transitionName="profile"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/ic_dashboard_black_24dp" />
 

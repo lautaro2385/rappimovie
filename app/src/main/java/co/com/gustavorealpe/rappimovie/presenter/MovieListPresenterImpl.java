@@ -1,4 +1,4 @@
-package co.com.gustavorealpe.rappimovie.presenter.popular;
+package co.com.gustavorealpe.rappimovie.presenter;
 
 import java.util.List;
 
@@ -69,7 +69,9 @@ public class MovieListPresenterImpl implements MovieListPresenter {
 
     @Override
     public void onDestroy() {
-        this.getPopular.dispose();
+        getPopular.dispose();
+        getTopRated.dispose();
+        getUpcoming.dispose();
         this.view = null;
     }
 }
