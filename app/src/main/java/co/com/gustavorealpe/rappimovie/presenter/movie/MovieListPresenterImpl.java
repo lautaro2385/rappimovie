@@ -58,6 +58,7 @@ public class MovieListPresenterImpl implements MovieListPresenter {
             @Override
             public void onError(Throwable e) {
                 view.visibleProgressBar(false);
+                view.showMessage(e.getMessage());
             }
 
             @Override

@@ -47,4 +47,9 @@ public class MovieCloud implements MovieDataSource {
     public Observable<Movie> getMovieById(Integer id) {
         return null;
     }
+
+    @Override
+    public Observable<List<Movie>> searchMovie(String search) {
+        throw new UnsupportedOperationException();
+    }
 }

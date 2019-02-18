@@ -13,5 +13,7 @@ public interface MovieDataSource {
     void save(List<Movie> movies, int type);
 
     Observable<Movie> getMovieById(Integer id);
+
+    Observable<List<Movie>> searchMovie(String search);
 }
 

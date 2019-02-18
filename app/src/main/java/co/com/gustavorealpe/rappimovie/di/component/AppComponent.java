@@ -13,6 +13,7 @@ import co.com.gustavorealpe.rappimovie.di.module.NetModule;
 import co.com.gustavorealpe.rappimovie.di.module.RepositoryModule;
 import co.com.gustavorealpe.rappimovie.domain.movie.usecase.GetTopRated;
 import co.com.gustavorealpe.rappimovie.domain.movie.usecase.GetUpcoming;
+import co.com.gustavorealpe.rappimovie.domain.movie.usecase.SearchMovie;
 import co.com.gustavorealpe.rappimovie.view.MainActivity;
 import dagger.Component;
 
@@ -27,4 +28,5 @@ public interface AppComponent {
     GetUpcoming getUpcoming();
     GetTopRated getTopRated();
     GetMovieById getMovieById();
+    SearchMovie setSearchMovie();
 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -177,6 +178,11 @@ public class MovieListFragment extends BaseFragment implements MovieListView {
     @Override
     public void setData(List<Movie> movies) {
         adapter.setData(movies);
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
     }
 
 

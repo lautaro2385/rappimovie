@@ -20,7 +20,7 @@ public abstract class GenericEntityDao<Q extends BaseModel, T extends DBFlowData
 
     protected abstract Class<Q> getEntityClass();
 
-    DatabaseWrapper dw = FlowManager.getDatabase(getDatabaseClass()).getWritableDatabase();
+    protected DatabaseWrapper dw = FlowManager.getDatabase(getDatabaseClass()).getWritableDatabase();
 
     /**
      * Hace la carga de la entidad por id

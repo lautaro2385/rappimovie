@@ -8,4 +8,7 @@ public interface MovieListView {
     void visibleProgressBar(Boolean en);
 
     void setData(List<Movie> movies);
+
+    void showMessage(String message);
+
 }

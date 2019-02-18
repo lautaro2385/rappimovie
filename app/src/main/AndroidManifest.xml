@@ -25,7 +25,7 @@
 
             <meta-data
                 android:name="android.app.default_searchable"
-                android:value=".view.SearchResultsActivity" />
+                android:value=".view.search.SearchResultsActivity" />
         </activity>
         <activity
             android:name=".view.movie.MovieDetailActivity"
@@ -36,7 +36,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.MainActivity" />
         </activity>
-        <activity android:name=".view.search.SearchResultsActivity">
+        <activity android:name=".view.search.SearchResultsActivity"
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>

@@ -5,5 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.search.SearchResultsActivity">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminateOnly="true" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="LinearLayoutManager"
+        tools:listitem="@layout/fragment_movie_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

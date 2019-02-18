@@ -65,4 +65,9 @@ public class MovieRepositoryImpl implements MovieRepository {
     public Observable<Movie> getMovieById(Integer id) {
         return local.getMovieById(id);
     }
+
+    @Override
+    public Observable<List<Movie>> searchMovie(String search) {
+        return local.searchMovie(search);
+    }
 }

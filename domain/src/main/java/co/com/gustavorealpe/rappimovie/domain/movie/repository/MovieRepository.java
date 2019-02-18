@@ -11,4 +11,6 @@ public interface MovieRepository {
     Observable<List<Movie>> getTopRated();
 
     Observable<Movie> getMovieById(Integer id);
+
+    Observable<List<Movie>> searchMovie(String search);
 }

@@ -86,4 +86,14 @@ public class MovieLocal implements MovieDataSource {
             emitter.onComplete();
         });
     }
+
+    @Override
+    public Observable<List<Movie>> searchMovie(String search) {
+        return Observable.create(emitter -> {
+            List<MovieEntity> data = dao.searchMovies(search);
+            List<Movie> movies = mapper.entity2model(data);
+            emitter.onNext(movies);
+            emitter.onComplete();
+        });
+    }
 }
