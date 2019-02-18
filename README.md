@@ -4,9 +4,9 @@ Proyecto realizado como prueba de conocimientos en android consumiendo una API.
 
 ## Requerimientos
 
-Android Studio 3.2.1
-Gradle 3.2.1
-Versión mínima de Android 24 API
+* Android Studio 3.2.1
+* Gradle 3.2.1
+* Versión mínima de Android 24 API
 
 ## Librerías utilizadas
 
